@@ -18,7 +18,7 @@ public class Ball : MonoBehaviour
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         Vector2 vec = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
         vec.randomVec2();
-        rb.velocity = Vector2.right * speed;
+        rb.velocity = vec * speed;
         line = GetComponent<LineRenderer>();
     }
 

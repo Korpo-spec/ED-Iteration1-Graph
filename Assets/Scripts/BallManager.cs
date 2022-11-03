@@ -18,6 +18,7 @@ public class BallManager : MonoBehaviour
     [SerializeField] private Dijkstra dijkstra;
 
     private readonly List<Ball> balls = new List<Ball>();
+    private CustomSampler sampler;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +45,8 @@ public class BallManager : MonoBehaviour
         {
             graph.Add(new List<(int Row, float Value)>());
         }
+        
+        sampler = CustomSampler.Create("Dijkstra");
     }
     
     private void OnDrawGizmosSelected()
@@ -116,9 +119,9 @@ public class BallManager : MonoBehaviour
         Profiler.BeginSample("Assemble", this);
         AssembleGraph();
         Profiler.EndSample();
-        
+        sampler.Begin();
         dijkstra.StartDijkstra(graph, 40, 20);
-
+        sampler.End();
         Profiler.BeginSample("Drawing", this);
         if (dijkstra.foundEndPoint && Application.isPlaying)
         {

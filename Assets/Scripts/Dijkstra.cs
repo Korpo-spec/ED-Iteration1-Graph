@@ -27,7 +27,7 @@ public class Dijkstra : MonoBehaviour
     private HashSet<int> openNodes = new HashSet<int>();
     public void StartDijkstra(List<List<(int Row, float Value)>> graph, int startnode, int endNode)
     {
-        Profiler.BeginSample("Dijkstra", this);
+        
         visited.Clear();
         unvisited.Clear();
         openNodes.Clear();
@@ -105,7 +105,7 @@ public class Dijkstra : MonoBehaviour
             
         }
         
-        Profiler.EndSample();
+        
 
         
     }
