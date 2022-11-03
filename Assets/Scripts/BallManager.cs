@@ -71,6 +71,7 @@ public class BallManager : MonoBehaviour
         for (int i = 0; i < balls.Count; i++)
         {
             Ball b = balls[i];
+            b.GetNearbyColliders();
             List<(int Rows, float Value)> row = graph[i];
             row.Clear();
             for (int j = 0; j < b.ballInRange.Count; j++)
@@ -112,8 +113,12 @@ public class BallManager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartAlgorithm()
+    {
+        
+    }
+
+    public void UpdateAlgorithm()
     {
         int checkpoint = 20;
         Profiler.BeginSample("Assemble", this);
@@ -142,6 +147,12 @@ public class BallManager : MonoBehaviour
             
         }
         Profiler.EndSample();
-        
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        UpdateAlgorithm();
     }
 }
