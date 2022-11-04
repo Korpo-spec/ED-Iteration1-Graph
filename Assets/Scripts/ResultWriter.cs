@@ -18,4 +18,17 @@ public class ResultWriter
             }
         }
     }
+    
+    public void WriteDataAppend( List<double> data , int circleAmount)
+    {
+        using (StreamWriter sw = new StreamWriter("Result.csv", true))
+        {
+            sw.WriteLine();
+            for (int i = 0; i < data.Count; i++)
+            {
+                sw.Write(";");
+                sw.Write(data[i].ToString(),true);
+            }
+        }
+    }
 }

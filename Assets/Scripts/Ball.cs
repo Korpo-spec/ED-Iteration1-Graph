@@ -32,7 +32,7 @@ public class Ball : MonoBehaviour
     void Update()
     {
         
-        transform.Translate(direction *Time.deltaTime, Space.World);
+        transform.Translate(direction * (Time.deltaTime *speed), Space.World);
 
         if (Mathf.Abs(transform.position.x) > 9)
         {
@@ -59,6 +59,7 @@ public class Ball : MonoBehaviour
     public void GetNearbyColliders()
     {
         Collider2D[] col = Physics2D.OverlapCircleAll(transform.position, 0.3f, mask);
+        
         ballInRange.Clear();
         foreach (var c in col)
         {

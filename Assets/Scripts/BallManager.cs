@@ -22,33 +22,49 @@ public class BallManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        float timebegining = Time.realtimeSinceStartup;
-        float startposX = (spacing * amountToCreate.x) /2 - spacing/2;
-        float startposY = (spacing * amountToCreate.y) / 2 - spacing/2;
+        
+        SpawnBalls(amountToCreate);
+        
+        
+        sampler = CustomSampler.Create("Dijkstra");
+    }
+
+    public void SpawnBalls(Vector2Int vec)
+    {
+        
+        float startposX = (spacing * vec.x) /2 - spacing/2;
+        float startposY = (spacing * vec.y) / 2 - spacing/2;
         int currentID = 0;
-        for (int i = 0; i < amountToCreate.y; i++)
+        for (int i = 0; i < vec.y; i++)
         {
-            for (int j = 0; j < amountToCreate.x; j++)
+            for (int j = 0; j < vec.x; j++)
             {
                 var g =Instantiate(ball, new Vector3(-startposX +j * spacing, -startposY + i * spacing, 0), quaternion.identity);
                 Ball ballScript = g.GetComponent<Ball>();
                 ballScript.ID = currentID;
+                g.name = currentID.ToString();
                 currentID++;
                 
                 balls.Add(ballScript);
             }
         }
-        Debug.Log(Time.realtimeSinceStartup - timebegining);
+        
         graph = new List<List<(int Row, float Value)>>();
 
         for (int i = 0; i < balls.Count; i++)
         {
             graph.Add(new List<(int Row, float Value)>());
         }
-        
-        sampler = CustomSampler.Create("Dijkstra");
     }
-    
+
+    public void DestroyBalls()
+    {
+        for (int i = 0; i < balls.Count; i++)
+        {
+            Destroy(balls[i].gameObject);
+        }
+        balls.Clear();
+    }
     private void OnDrawGizmosSelected()
     {
         
@@ -153,6 +169,6 @@ public class BallManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateAlgorithm();
+        
     }
 }

@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 437376960020420909, guid: a7634ed7883a336459a380584fc526bf, type: 3}
-  amountToCreate: {x: 50, y: 30}
+  amountToCreate: {x: 50, y: 2}
   spacing: 0.3
   dijkstra: {fileID: 513658421}
 --- !u!120 &140140645
@@ -931,6 +931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf788ed1fec2b2479b494bc59f78fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballManager: {fileID: 140140644}
 --- !u!4 &1990913983
 Transform:
   m_ObjectHideFlags: 0
