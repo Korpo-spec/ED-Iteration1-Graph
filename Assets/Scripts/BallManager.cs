@@ -16,7 +16,11 @@ public class BallManager : MonoBehaviour
     [SerializeField] private float spacing;
 
     [SerializeField] private Dijkstra dijkstra;
+    [SerializeField] private Algorithbase algorithm;
+    [SerializeField] private SimulationBoundaries boundaries;
 
+    private int startNode;
+    private int endNode;
     private readonly List<Ball> balls = new List<Ball>();
     private CustomSampler sampler;
     // Start is called before the first frame update
@@ -24,7 +28,7 @@ public class BallManager : MonoBehaviour
     {
         
         SpawnBalls(amountToCreate);
-        
+
         
         sampler = CustomSampler.Create("Dijkstra");
     }
@@ -48,7 +52,9 @@ public class BallManager : MonoBehaviour
                 balls.Add(ballScript);
             }
         }
-        
+
+        boundaries.boundaries = new Vector2(Mathf.Abs(startposX + spacing*3), Mathf.Abs(startposY + spacing*3));
+        Debug.Log(startposX);
         graph = new List<List<(int Row, float Value)>>();
 
         for (int i = 0; i < balls.Count; i++)
@@ -56,6 +62,8 @@ public class BallManager : MonoBehaviour
             graph.Add(new List<(int Row, float Value)>());
         }
     }
+
+    
 
     public void DestroyBalls()
     {
@@ -99,8 +107,17 @@ public class BallManager : MonoBehaviour
             
         }
         
+        GetRandomStartEndPos();
         
-        
+    }
+    private void GetRandomStartEndPos()
+    {
+        startNode = Random.Range(0, balls.Count);
+
+        do
+        {
+            endNode = Random.Range(0, balls.Count);
+        } while (startNode == endNode);
     }
 
     private void OnDrawGizmos()
@@ -121,9 +138,6 @@ public class BallManager : MonoBehaviour
           
         linepos.Add(balls[checkpoint].transform.position);
         linepos.Add(balls[prevVertex[checkpoint]].transform.position);
-        //For drawing line in the world space, provide the x,y,z values
-         //x,y and z position of the end point of the line
-        //Gizmos.DrawLine(balls[checkpoint].transform.position, balls[prevVertex[checkpoint]].transform.position);
         checkpoint = prevVertex[checkpoint];
         DrawToCheckPoint(prevVertex, checkpoint, startNode);
         
@@ -136,18 +150,18 @@ public class BallManager : MonoBehaviour
 
     public void UpdateAlgorithm()
     {
-        int checkpoint = 20;
+        
         Profiler.BeginSample("Assemble", this);
         AssembleGraph();
         Profiler.EndSample();
         sampler.Begin();
-        dijkstra.StartDijkstra(graph, 40, 20);
+        dijkstra.StartDijkstra(graph, startNode, endNode);
         sampler.End();
         Profiler.BeginSample("Drawing", this);
         if (dijkstra.foundEndPoint && Application.isPlaying)
         {
             linepos.Clear();
-            DrawToCheckPoint(dijkstra.prevVertex, 20, 40);
+            DrawToCheckPoint(dijkstra.prevVertex, endNode, startNode);
             lineRenderer = GetComponent<LineRenderer>();
             lineRenderer.startWidth = 0.2f;
             lineRenderer.endWidth = 0.2f;
@@ -164,6 +178,45 @@ public class BallManager : MonoBehaviour
         }
         Profiler.EndSample();
 
+    }
+
+    public void UpdateAlgorithm(int i)
+    {
+        GetRandomStartEndPos();
+        Profiler.BeginSample("Assemble", this);
+        algorithm.AssembleGraph(balls);
+        Profiler.EndSample();
+        sampler.Begin();
+        algorithm.StartAlgorithm(startNode, endNode);
+        sampler.End();
+        Profiler.BeginSample("Drawing", this);
+        if (algorithm.pathFound)
+        {
+            Debug.Log("PathFound");
+            linepos.Clear();
+            
+            DrawPath(algorithm.endNode, balls[startNode]);
+            lineRenderer = GetComponent<LineRenderer>();
+            lineRenderer.startWidth = 0.2f;
+            lineRenderer.endWidth = 0.2f;
+            lineRenderer.positionCount = linepos.Count;
+            lineRenderer.useWorldSpace = true;
+
+            lineRenderer.SetPositions( linepos.ToArray());
+        }
+        Profiler.EndSample();
+    }
+
+    private void DrawPath(INode currentNode , INode startNode)
+    {
+        linepos.Add(currentNode.position);
+        
+
+        if (currentNode == startNode)
+        {
+            return;
+        }
+        DrawPath(currentNode.parent, startNode);
     }
 
     // Update is called once per frame

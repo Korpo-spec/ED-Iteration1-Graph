@@ -98,10 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8318f54666c92a642a7ddba3aefd051d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 5
   mask:
     serializedVersion: 2
     m_Bits: 8
+  boundary: {fileID: 11400000, guid: 99afddd588975f547a44983e514f31d4, type: 2}
   ballInRange: []
   ID: 0
 --- !u!58 &1419797439814065634
