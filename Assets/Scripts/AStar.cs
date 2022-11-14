@@ -26,17 +26,13 @@ public class AStar : Algorithbase
         startnode = startIndex;
         HashSet<INode> openList = new HashSet<INode>();
         HashSet<INode> closedList = new HashSet<INode>();
-        
         openList.Add(nodes[startIndex]);
-
         INode currentNode;
-
         while (openList.Count > 0)
         {
             Profiler.BeginSample("Sort", this);
             currentNode = openList.OrderBy(node => node.fCost).First();
             Profiler.EndSample();
-
             if (currentNode == nodes[endIndex])
             {
                 pathFound = true;

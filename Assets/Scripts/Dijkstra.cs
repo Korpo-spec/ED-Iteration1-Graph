@@ -142,8 +142,8 @@ public class Dijkstra : Algorithbase
     {
         base.DrawPath(lineRenderer);
         
-        Debug.Log("drawing");
         
+        lineRenderer.positionCount = 0;
         linepos.Clear();
         DrawToCheckPoint(prevVertex, endnode, startnode);
         lineRenderer.startWidth = 0.2f;
@@ -166,7 +166,7 @@ public class Dijkstra : Algorithbase
         {
             return;
         }
-        Debug.Log("drawinnng");
+        
         linepos.Add(balls[checkpoint].transform.position);
         linepos.Add(balls[prevVertex[checkpoint]].transform.position);
         checkpoint = prevVertex[checkpoint];

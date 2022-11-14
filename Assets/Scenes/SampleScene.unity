@@ -171,8 +171,7 @@ MonoBehaviour:
   ball: {fileID: 437376960020420909, guid: a7634ed7883a336459a380584fc526bf, type: 3}
   amountToCreate: {x: 50, y: 25}
   spacing: 0.3
-  dijkstra: {fileID: 513658421}
-  algorithm: {fileID: 1919253463}
+  algorithm: {fileID: 513658421}
   boundaries: {fileID: 11400000, guid: 99afddd588975f547a44983e514f31d4, type: 2}
 --- !u!120 &140140645
 LineRenderer:
@@ -432,7 +431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6999797069551465991, guid: 5359f2cddbf364d41a274092416bc73b, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6999797069551465991, guid: 5359f2cddbf364d41a274092416bc73b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -961,17 +960,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a94ac42100a12744f9813185f75fa695, type: 3}
---- !u!114 &1919253463 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7878297629318667530, guid: a94ac42100a12744f9813185f75fa695, type: 3}
-  m_PrefabInstance: {fileID: 1919253462}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e0744d5a7caa5e49a372e8fc20d1d43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1990913981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,5 +1005,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
