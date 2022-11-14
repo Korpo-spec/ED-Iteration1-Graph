@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &68424903
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5115094276803745834, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115094276803745834, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115094276803745834, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115094276803745834, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115094276803745834, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115094276803745834, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115094276803745834, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115094276803745834, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115094276803745834, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115094276803745834, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115094276803745834, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6135604885596489181, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
+      propertyPath: m_Name
+      value: BFS
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
 --- !u!1 &140140642
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,9 +226,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 437376960020420909, guid: a7634ed7883a336459a380584fc526bf, type: 3}
-  amountToCreate: {x: 50, y: 25}
+  amountToCreate: {x: 60, y: 30}
   spacing: 0.3
-  algorithm: {fileID: 513658421}
+  algorithm: {fileID: 946092498}
   boundaries: {fileID: 11400000, guid: 99afddd588975f547a44983e514f31d4, type: 2}
 --- !u!120 &140140645
 LineRenderer:
@@ -287,7 +344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &194802927
 Transform:
   m_ObjectHideFlags: 0
@@ -475,17 +532,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5359f2cddbf364d41a274092416bc73b, type: 3}
---- !u!114 &513658421 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2191554077304342917, guid: 5359f2cddbf364d41a274092416bc73b, type: 3}
-  m_PrefabInstance: {fileID: 513658420}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e30912e3c3928c468142d3d695a3f29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +727,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &946092498 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -8381397369469935684, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
+  m_PrefabInstance: {fileID: 68424903}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eafc9bed02076f9498f803a4f042a772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1217648615
 GameObject:
   m_ObjectHideFlags: 0

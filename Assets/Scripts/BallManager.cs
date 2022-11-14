@@ -98,7 +98,10 @@ public class BallManager : MonoBehaviour
 
     public void UpdateAlgorithm()
     {
+        
         GetRandomStartEndPos();
+        
+        Debug.Log("startPos" + startNode+ "endPos" + endNode);
         Profiler.BeginSample("Assemble", this);
         algorithm.AssembleGraph(balls);
         Profiler.EndSample();

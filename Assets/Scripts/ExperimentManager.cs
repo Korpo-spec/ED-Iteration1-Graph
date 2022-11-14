@@ -47,6 +47,7 @@ public class ExperimentManager : MonoBehaviour
             if (currentCircleAmount < endCircleAmount)
             {
                 ballManager.SpawnBalls(new Vector2Int(currentCircleAmount*2, 25));
+                
             }
             
             
