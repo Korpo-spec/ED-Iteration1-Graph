@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8381397369469935684, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
+      propertyPath: Name
+      value: BFS
+      objectReference: {fileID: 0}
     - target: {fileID: 5115094276803745834, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -226,9 +230,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 437376960020420909, guid: a7634ed7883a336459a380584fc526bf, type: 3}
-  amountToCreate: {x: 60, y: 30}
+  amountToCreate: {x: 1, y: 25}
   spacing: 0.3
-  algorithm: {fileID: 946092498}
+  algorithm: {fileID: 693602079}
   boundaries: {fileID: 11400000, guid: 99afddd588975f547a44983e514f31d4, type: 2}
 --- !u!120 &140140645
 LineRenderer:
@@ -486,6 +490,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Djikstra
       objectReference: {fileID: 0}
+    - target: {fileID: 2191554077304342917, guid: 5359f2cddbf364d41a274092416bc73b, type: 3}
+      propertyPath: Name
+      value: Dijkstra
+      objectReference: {fileID: 0}
     - target: {fileID: 6999797069551465991, guid: 5359f2cddbf364d41a274092416bc73b, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -727,6 +735,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &693602079 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7878297629318667530, guid: a94ac42100a12744f9813185f75fa695, type: 3}
+  m_PrefabInstance: {fileID: 1919253462}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e0744d5a7caa5e49a372e8fc20d1d43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &822354021 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2191554077304342917, guid: 5359f2cddbf364d41a274092416bc73b, type: 3}
+  m_PrefabInstance: {fileID: 513658420}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e30912e3c3928c468142d3d695a3f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &946092498 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -8381397369469935684, guid: 518e0311e2dd26d4089839f65333c922, type: 3}
@@ -1011,6 +1041,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7878297629318667530, guid: a94ac42100a12744f9813185f75fa695, type: 3}
+      propertyPath: Name
+      value: A*
+      objectReference: {fileID: 0}
     - target: {fileID: 8898992899037756939, guid: a94ac42100a12744f9813185f75fa695, type: 3}
       propertyPath: m_Name
       value: AStar
@@ -1047,8 +1081,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballManager: {fileID: 140140644}
-  startCircleAmount: 1
+  startCircleAmount: 28
   endCircleAmount: 30
+  algorithms:
+  - {fileID: 822354021}
+  - {fileID: 693602079}
+  - {fileID: 946092498}
 --- !u!4 &1990913983
 Transform:
   m_ObjectHideFlags: 0

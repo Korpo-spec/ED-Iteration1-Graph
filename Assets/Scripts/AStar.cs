@@ -76,7 +76,7 @@ public class AStar : Algorithbase
         base.DrawPath(lineRenderer);
         if (pathFound)
         {
-            Debug.Log("PathFound");
+            
             linepos.Clear();
             
             DrawPath(endNode, nodes[startnode]);

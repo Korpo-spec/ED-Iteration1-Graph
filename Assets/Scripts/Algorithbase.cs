@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class Algorithbase : MonoBehaviour
 {
+    public string Name;
     public bool pathFound;
     public INode endNode;
     protected int startnode;

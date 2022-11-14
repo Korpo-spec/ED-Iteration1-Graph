@@ -45,7 +45,7 @@ public class BFS : Algorithbase
                     node.Nieghbours[i].parent = node;
                     if (node.Nieghbours[i] == endNode)
                     {
-                        Debug.Log(node.Nieghbours[i].name +"endNodeFound");
+                        
                         pathFound = true;
                         endNode = node.Nieghbours[i];
                         return;
@@ -62,7 +62,7 @@ public class BFS : Algorithbase
         base.DrawPath(lineRenderer);
         if (pathFound)
         {
-            Debug.Log("PathFound");
+            
             linepos.Clear();
             
             DrawPath(endNode, Graph[startnode]);

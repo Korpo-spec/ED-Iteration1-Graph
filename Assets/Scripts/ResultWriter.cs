@@ -27,8 +27,9 @@ public class ResultWriter
             sw.Write(circleAmount +";");
             for (int i = 0; i < data.Count; i++)
             {
-                sw.Write(";");
+                
                 sw.Write(data[i].ToString(),true);
+                sw.Write(";");
             }
         }
     }

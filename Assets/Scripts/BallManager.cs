@@ -28,7 +28,7 @@ public class BallManager : MonoBehaviour
     void Start()
     {
         
-        SpawnBalls(amountToCreate);
+        
 
         lineRenderer = GetComponent<LineRenderer>();
         sampler = CustomSampler.Create("Dijkstra");
@@ -59,6 +59,10 @@ public class BallManager : MonoBehaviour
         algorithm.OnStart(balls);
     }
 
+    public void SetAlgorithm(Algorithbase algorithbase)
+    {
+        algorithm = algorithbase;
+    }
     
 
     public void DestroyBalls()
