@@ -34,7 +34,7 @@ public class BallManager : MonoBehaviour
         sampler = CustomSampler.Create("Dijkstra");
     }
 
-    public void SpawnBalls(Vector2Int vec)
+    public void SpawnBalls(Vector2Int vec, int rest)
     {
         
         float startposX = (spacing * vec.x) /2 - spacing/2;
@@ -54,6 +54,16 @@ public class BallManager : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < rest; i++)
+        {
+            var g =Instantiate(ball, new Vector3(Random.Range(-startposX, startposX), Random.Range(-startposY, startposY), 0), quaternion.identity);
+            Ball ballScript = g.GetComponent<Ball>();
+            ballScript.ID = currentID;
+            g.name = currentID.ToString();
+            currentID++;
+                
+            balls.Add(ballScript);
+        }
         boundaries.boundaries = new Vector2(Mathf.Abs(startposX + spacing*3), Mathf.Abs(startposY + spacing*3));
         Debug.Log(startposX);
         algorithm.OnStart(balls);

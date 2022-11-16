@@ -18,6 +18,8 @@ public class ExperimentManager : MonoBehaviour
 
     [SerializeField] private int startCircleAmount;
 
+    [SerializeField] private int addAmount;
+
     [SerializeField] private int endCircleAmount;
 
     [SerializeField] private List<Algorithbase> algorithms;
@@ -41,7 +43,7 @@ public class ExperimentManager : MonoBehaviour
         
         ballManager.SetAlgorithm(algorithms[0]);
         algorithmIndex = 0;
-        ballManager.SpawnBalls(new Vector2Int(currentCircleAmount*2, 25));
+        CalculateSpawnBalls();
     }
 
     // Update is called once per frame
@@ -67,9 +69,9 @@ public class ExperimentManager : MonoBehaviour
             Debug.Log( currentCircleAmount + "Indexx");
             if (algorithmIndex >= algorithms.Count)
             {
-                resultWriter.WriteDataAppend(algorithmAvarage, currentCircleAmount*2 * 25);
+                resultWriter.WriteDataAppend(algorithmAvarage, currentCircleAmount);
                 algorithmAvarage.Clear();
-                currentCircleAmount++;
+                currentCircleAmount += addAmount;
                 Debug.Log(algorithmIndex + "Indexxx");
                 algorithmIndex = 0;
                 
@@ -78,7 +80,7 @@ public class ExperimentManager : MonoBehaviour
             
             if (currentCircleAmount < endCircleAmount)
             {
-                ballManager.SpawnBalls(new Vector2Int(currentCircleAmount*2, 25));
+                CalculateSpawnBalls();
                 
             }
             
@@ -88,6 +90,19 @@ public class ExperimentManager : MonoBehaviour
         {
             ballManager.UpdateAlgorithm();
         }
+    }
+
+    private void CalculateSpawnBalls()
+    {
+        float result = Mathf.Sqrt(currentCircleAmount);
+        
+        int resultInt = Mathf.FloorToInt(result);
+        
+        int rest = (int)Mathf.Pow(resultInt, 2);
+
+        rest = currentCircleAmount - rest;
+        
+        ballManager.SpawnBalls(new Vector2Int(resultInt, resultInt), rest);
     }
 
     

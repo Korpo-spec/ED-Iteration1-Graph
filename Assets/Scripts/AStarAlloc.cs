@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Profiling;
 
-public class AStar : Algorithbase
+public class AStarAlloc : Algorithbase
 {
     public override void AssembleGraph(List<Ball> balls)
     {
@@ -18,16 +18,14 @@ public class AStar : Algorithbase
 
     private List<INode> nodes = new List<INode>();
     
-    HashSet<INode> openList = new HashSet<INode>();
-    HashSet<INode> closedList = new HashSet<INode>();
+    
     
     public override void StartAlgorithm( int startIndex, int endIndex)
     {
         pathFound = false;
         startnode = startIndex;
-        openList.Clear();
-        closedList.Clear();
-        
+        List<INode> openList = new List<INode>();
+        List<INode> closedList = new List<INode>();
         openList.Add(nodes[startIndex]);
         INode currentNode;
         while (openList.Count > 0)
