@@ -69,7 +69,7 @@ public class Ball : MonoBehaviour, INode
 
     public void GetNearbyColliders()
     {
-        Collider2D[] col = Physics2D.OverlapCircleAll(transform.position, 0.3f, mask);
+        Collider2D[] col = Physics2D.OverlapCircleAll(transform.position, 0.5f, mask);
         
         ballInRange.Clear();
         foreach (var c in col)

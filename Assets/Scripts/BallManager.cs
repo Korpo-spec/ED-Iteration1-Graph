@@ -101,12 +101,17 @@ public class BallManager : MonoBehaviour
     
     private void GetRandomStartEndPos()
     {
+        balls[startNode].GetComponent<SpriteRenderer>().color = Color.white;
+        balls[endNode].GetComponent<SpriteRenderer>().color = Color.white;
         startNode = Random.Range(0, balls.Count);
 
         do
         {
             endNode = Random.Range(0, balls.Count);
         } while (startNode == endNode);
+        
+        balls[startNode].GetComponent<SpriteRenderer>().color = Color.black;
+        balls[endNode].GetComponent<SpriteRenderer>().color = Color.black;
     }
     
 

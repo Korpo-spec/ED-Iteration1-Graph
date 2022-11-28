@@ -13,6 +13,9 @@ public class AStarAlloc : Algorithbase
         {
             balls[i].GetNearbyColliders();
             nodes.Add(balls[i]);
+            nodes[i].hCost = 0;
+            nodes[i].gCost = 0;
+            nodes[i].parent = null;
         }
     }
 
@@ -51,7 +54,7 @@ public class AStarAlloc : Algorithbase
                 {
                     openList.Add(node);
                     node.parent = currentNode;
-                    node.gCost = currentNode.gCost + 1;
+                    node.gCost = currentNode.gCost + currentNode.gCost + Vector3.Distance(currentNode.position, node.position);
                     node.hCost = Vector3.Distance(nodes[endIndex].position, node.position);
                 }
                 else

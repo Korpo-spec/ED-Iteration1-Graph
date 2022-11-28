@@ -83,6 +83,7 @@ public class Dijkstra : Algorithbase
             if (currentNode == endNode)
             {
                 pathFound = true;
+                Debug.Log("found");
             }
             
             //Check surrounding
@@ -141,6 +142,10 @@ public class Dijkstra : Algorithbase
     public override void DrawPath(LineRenderer lineRenderer)
     {
         base.DrawPath(lineRenderer);
+        if (!pathFound)
+        {
+            return;
+        }
         
         
         lineRenderer.positionCount = 0;

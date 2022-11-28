@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Profiling;
+using UnityEngine.UI;
 
 public class ExperimentManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class ExperimentManager : MonoBehaviour
 
     private List<double> algorithmAvarage = new List<double>();
 
-
+    [SerializeField] private Text text;
     [SerializeField] private BallManager ballManager;
 
     [SerializeField] private int startCircleAmount;
@@ -56,7 +57,7 @@ public class ExperimentManager : MonoBehaviour
             elapsedTimeMilliSec.Add(recorder.elapsedNanoseconds / 1000000f);
         }
 
-        if (elapsedTimeMilliSec.Count >200)
+        if (elapsedTimeMilliSec.Count >500)
         {
             //resultWriter.WriteData("testData", elapsedTimeMilliSec);
             algorithmAvarage.Add(elapsedTimeMilliSec.GetAvarage());
@@ -65,14 +66,14 @@ public class ExperimentManager : MonoBehaviour
             
             
             algorithmIndex++;
-            Debug.Log(algorithmIndex + "Index");
-            Debug.Log( currentCircleAmount + "Indexx");
+            
             if (algorithmIndex >= algorithms.Count)
             {
                 resultWriter.WriteDataAppend(algorithmAvarage, currentCircleAmount);
                 algorithmAvarage.Clear();
                 currentCircleAmount += addAmount;
-                Debug.Log(algorithmIndex + "Indexxx");
+                text.text = currentCircleAmount.ToString();
+                
                 algorithmIndex = 0;
                 
             }
